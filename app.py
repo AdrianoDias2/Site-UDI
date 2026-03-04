@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-# Caminho para os modelos (ajuste os nomes se necessário)
+
 MODELS = {
     "udi": joblib.load("models/best_decision_tree_model.pkl"),
     "more": joblib.load("models/best_decision_tree_model_UDI_more.pkl"),
@@ -18,13 +18,12 @@ def index():
     
     if request.method == "POST":
         try:
-            # Pegando as 6 variáveis do formulário
-            # IMPORTANTE: Garanta que esta ordem [0,1,2,3,4,5] é a mesma do seu treino!
+            
             features = [
                 float(request.form.get("wwr")),
                 float(request.form.get("tvis")),
                 float(request.form.get("n_aletas")),
-                float(request.form.get("angulo")),    # Adicionado aqui
+                float(request.form.get("angulo")),    
                 float(request.form.get("largura")),
                 float(request.form.get("direcao"))
             ]
